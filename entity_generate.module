@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * Implements hook_libraries_info().
+ */
+function entity_generate_libraries_info() {
+  $libraries['faker'] = array(
+    'name' => 'Faker',
+    'vendor url' => 'https://github.com/fzaninotto/Faker',
+    'download url' => 'https://github.com/fzaninotto/Faker/archive/v1.1.0.tar.gz',
+    // The actual library files are contained in 'sites/all/libraries/faker/src'
+    'path' => 'src',
+    'files' => array(
+      'php' => array(
+        'autoload.php',
+      ),
+    ),
+    'version' => '1.1',
+  );
+  return $libraries;
+}
+
+function entity_generate_menu() {
+  $items['admin/config/development/entity-generate'] = array(
+    'title' => 'Entity generate',
+    'description' => 'Generate entity content for testing.',
+    'page callback' => 'entity_generate_form',
+//    'page callback' => 'drupal_get_form',
+//    'page arguments' => array('system_performance_settings'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'entity_generate.admin.inc',
+    'weight' => 10,
+  );
+
+  return $items;
+}

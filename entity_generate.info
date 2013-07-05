@@ -1,0 +1,4 @@
+name = Entity generate
+description = generate entity content for testing
+package = go1
+core = 7.x
